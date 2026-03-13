@@ -666,12 +666,11 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .advisory-subtext {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--navy);
-  letter-spacing: 0.04em;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #555;
+  font-style: normal;
 }
 
 .consequence-list li {
