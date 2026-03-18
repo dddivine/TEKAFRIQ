@@ -1,15 +1,3 @@
-/* ===================================================
-   TEKAFRIQ – script.js
-   Features:
-     1. Navbar scroll shadow
-     2. Hamburger mobile menu toggle
-     3. Dropdown menus (click + hover)
-     4. Logo carousel – seamless auto scroll
-     5. Smooth anchor scroll
-     6. Button hover ripple effect
-     7. Active nav link highlight on scroll
-=================================================== */
-
 document.addEventListener('DOMContentLoaded', function () {
 
   /* =============================================
@@ -79,116 +67,108 @@ document.addEventListener('DOMContentLoaded', function () {
   /* =============================================
      4. LOGO CAROUSEL – seamless auto scroll
   ============================================= */
-  const track = document.getElementById('logosTrack');
+  function initCarousel({
+  trackId,
+  prevBtnId,
+  nextBtnId,
+  interval = 2000,
+  direction = 'forward'
+}) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
 
-  if (track) {
-    // Duplicate cards for seamless infinite loop
-    const originalCards = Array.from(track.children);
-    originalCards.forEach(function (card) {
-      const clone = card.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      track.appendChild(clone);
-    });
+  const cards = track.querySelectorAll('.logo-card');
+  let index = 0;
+  let isTransitioning = false;
 
-    let offset = 0;
-    const speed = 1.5;
-    let paused = false;
-
-    function getHalfWidth() {
-      return track.scrollWidth / 2;
-    }
-
-    function autoScroll() {
-      if (!paused) {
-        offset += speed;
-        if (offset >= getHalfWidth()) {
-          offset = 0;
-        }
-        track.style.transform = 'translateX(-' + offset + 'px)';
-      }
-      requestAnimationFrame(autoScroll);
-    }
-
-    // Pause on hover
-    track.addEventListener('mouseenter', function () { paused = true; });
-    track.addEventListener('mouseleave', function () { paused = false; });
-
-    // Arrow buttons
-    const scrollLeft = document.getElementById('scrollLeft');
-    const scrollRight = document.getElementById('scrollRight');
-    const ARROW_STEP = 200;
-
-    if (scrollLeft) {
-      scrollLeft.addEventListener('click', function () {
-        offset = Math.max(0, offset - ARROW_STEP);
-      });
-    }
-    if (scrollRight) {
-      scrollRight.addEventListener('click', function () {
-        offset = Math.min(getHalfWidth() - 1, offset + ARROW_STEP);
-      });
-    }
-
-    autoScroll();
+  function getCardWidth() {
+    return cards[0].offsetWidth;
   }
 
-  
-  /* =============================================
-     4B. CERTIFICATES CAROUSEL – reverse auto scroll
-  ============================================= */
-  const certsTrack = document.getElementById('certsTrack');
-
-  if (certsTrack) {
-    const originalCertCards = Array.from(certsTrack.children);
-    originalCertCards.forEach(function (card) {
-      const clone = card.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      certsTrack.appendChild(clone);
-    });
-
-    const certSpeed = 1.5;
-    let certPaused = false;
-
-    function getCertHalfWidth() {
-      return certsTrack.scrollWidth / 2;
-    }
-
-    // Start from halfway so reverse scroll is visible from the start
-    let certOffset = getCertHalfWidth() > 0 ? 0 : 0;
-
-    function certAutoScroll() {
-      if (!certPaused) {
-        certOffset -= certSpeed; // negative = scroll right to left reversed
-        if (certOffset <= 0) {
-          certOffset = getCertHalfWidth();
-        }
-        certsTrack.style.transform = 'translateX(-' + certOffset + 'px)';
-      }
-      requestAnimationFrame(certAutoScroll);
-    }
-
-    certsTrack.addEventListener('mouseenter', function () { certPaused = true; });
-    certsTrack.addEventListener('mouseleave', function () { certPaused = false; });
-
-    const certScrollLeft = document.getElementById('certScrollLeft');
-    const certScrollRight = document.getElementById('certScrollRight');
-    const CERT_STEP = 200;
-
-    if (certScrollLeft) {
-      certScrollLeft.addEventListener('click', function () {
-        certOffset = Math.min(getCertHalfWidth(), certOffset + CERT_STEP);
-      });
-    }
-    if (certScrollRight) {
-      certScrollRight.addEventListener('click', function () {
-        certOffset = Math.max(0, certOffset - CERT_STEP);
-      });
-    }
-
-    // Init offset at half so reverse scroll starts cleanly
-    certOffset = getCertHalfWidth() / 2;
-    certAutoScroll();
+  function getHalf() {
+    return cards.length / 2; // because you duplicated manually
   }
+
+  function updatePosition(animate = true) {
+    const cardWidth = getCardWidth();
+
+    if (!animate) {
+      track.style.transition = 'none';
+      track.style.transform = `translateX(-${index * cardWidth}px)`;
+
+      // force reflow
+      track.offsetHeight;
+
+      track.style.transition = 'transform 0.4s ease';
+    } else {
+      track.style.transform = `translateX(-${index * cardWidth}px)`;
+    }
+  }
+
+  function nextSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
+    index++;
+    updatePosition(true);
+  }
+
+  function prevSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
+    index--;
+    updatePosition(true);
+  }
+
+  track.addEventListener('transitionend', () => {
+    isTransitioning = false;
+
+    const half = getHalf();
+
+    // Passed the duplicated end → reset to start
+    if (index >= half) {
+      index = 0;
+      updatePosition(false);
+    }
+
+    // Passed the start → jump to duplicate end
+    if (index < 0) {
+      index = half - 1;
+      updatePosition(false);
+    }
+  });
+
+  // Buttons
+  const prevBtn = document.getElementById(prevBtnId);
+  const nextBtn = document.getElementById(nextBtnId);
+
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+  // Auto scroll
+  function autoMove() {
+    direction === 'forward' ? nextSlide() : prevSlide();
+  }
+
+  let autoScroll = setInterval(autoMove, interval);
+
+  track.addEventListener('mouseenter', () => clearInterval(autoScroll));
+  track.addEventListener('mouseleave', () => {
+    autoScroll = setInterval(autoMove, interval);
+  });
+
+  updatePosition(false);
+}
+initCarousel({
+  trackId: 'logosTrack',
+  prevBtnId: 'scrollLeft',
+  nextBtnId: 'scrollRight',
+  interval: 1500,
+  direction: 'forward'
+});
+
+
 
   /* =============================================
      5. SMOOTH ANCHOR SCROLL (offset for fixed nav)
