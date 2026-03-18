@@ -39,7 +39,7 @@ ul { list-style: none; }
 
 /* ---- Section Label ---- */
 .section-label {
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.99rem;
   font-weight: 900;
   letter-spacing: 0.22em;
@@ -72,7 +72,7 @@ ul { list-style: none; }
 =================================================== */
 .btn {
   display: inline-block;
-  font-family: 'Barlow', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -140,7 +140,7 @@ ul { list-style: none; }
 
 /* Logo */
 .logo-image {
-  height: 36px;
+  height: 50px;
   width: auto;
 }
 
@@ -154,7 +154,7 @@ ul { list-style: none; }
 }
 
 .nav-links > li > a {
-  font-family: 'Barlow', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -235,7 +235,7 @@ ul { list-style: none; }
 
 /* ---- Hamburger ---- */
 .hamburger {
-  display: none;
+  display:none;
   color: #a7a9ac;
   flex-direction: column;
   justify-content: center;
@@ -330,7 +330,8 @@ ul { list-style: none; }
 }
 
 .hero-tags span {
-  font-size: 0.78rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.75rem;
   font-weight: 500;
   color: #444;
   letter-spacing: 0.02em;
@@ -346,6 +347,7 @@ ul { list-style: none; }
 }
 
 .hero-sub {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
   color: #444;
   max-width: 560px;
@@ -446,6 +448,19 @@ ul { list-style: none; }
   letter-spacing: 0.08em;
 }
 
+.oracle-logo {
+  max-height: 70px; 
+}
+
+.logo-card img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
 /* Scroll arrows */
 .scroll-arrow {
   background: none;
@@ -470,6 +485,12 @@ ul { list-style: none; }
   transform: scale(1.08);
 }
 
+.logos-track {
+  display: flex;
+  will-change: transform;
+  transition: transform 0.4s ease;
+}
+
 /* ===================================================
    TESTIMONIALS
 =================================================== */
@@ -491,14 +512,15 @@ ul { list-style: none; }
 }
 
 .testimonial-card p {
-font-family: 'Times New Roman', Times, serif;
-  font-size: 0.88rem;
+font-family: 'Playfair Display', serif;
+  font-size: 0.90rem;
   color:black;
   line-height: 1.8;
   margin-bottom: 1.5rem;
 }
 
 .testimonial-author {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.78rem;
   color: var(--mid-gray);
   font-weight: 500;
@@ -541,6 +563,7 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .stat-label {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -551,157 +574,7 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 /* ===================================================
-   CERTIFICATES CAROUSEL
-=================================================== */
-.certs-section {
-  background: #fff;
-  padding: 2.5rem 0;
-  border-bottom: 1px solid var(--light-gray);
-}
-
-.certs-track-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 3.5rem;
-  gap: 0;
-}
-
-.certs-viewport {
-  overflow: hidden;
-  flex: 1;
-}
-
-.certs-track {
-  display: flex;
-  gap: 0;
-  cursor: default;
-  user-select: none;
-  will-change: transform;
-}
-
-.certs-track .logo-card {
-  height: 160px;        
-}
-
-.certs-track .logo-card img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;  
-}
-
-/* ===================================================
-   ADVISORY
-=================================================== */
-.advisory-section {
-  padding: 6rem 2rem;
-  background: #fff;
-}
-
-.advisory-headline {
-  font-family:'Playfair Display', serif;
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  font-weight: 600;
-  margin-bottom: 3rem;
-  color:  #A7A9AC;
-}
-
-.advisory-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-.advisory-col h3 {
-  font-family: 'Barlow', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--dark);
-  margin-bottom: 1.5rem;
-}
-
-.problem-list {
-  border: none;
-}
-
-.problem-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--light-gray);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--dark);
-}
-
-.x-mark { color: var(--red); font-size: 1rem; }
-
-.advisory-note {
-  margin-top: 1.5rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #555;
-  font-style: normal;
-}
-
-.advisory-cta-text {
-  margin-top: 1rem;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #0B3E91;
-  text-align: center;
-}
-
-.advisory-right {
-  background: var(--off-white);
-  padding: 2rem;
-  border-radius: var(--radius);
-}
-
-.advisory-subtext {
-  margin-top: 1.5rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #555;
-  font-style: normal;
-}
-
-.consequence-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid #d8d8d8;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--dark);
-}
-
-.arrow-mark { font-size: 0.7rem; }
-
-.problem-list .arrow-mark { color: #E1251B; }
-
-.consequence-list .arrow-mark { color: #0B3E91; }
-
-.advisory-footer-text {
-  margin-top: 1.5rem;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--navy);
-  text-align: center;
-  line-height: 1.5;
-}
-/* ===================================================
-   TRANSFORMATION / SERVICES
+   TRANSFORMATION 
 =================================================== */
 .transformation-section {
   background: var(--off-white);
@@ -761,70 +634,35 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .service-card h3 {
-  font-family: 'Barlow', sans-serif;
-  font-size: 0.88rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--dark);
   line-height: 1.4;
 }
 
-.service-tagline {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--navy);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+
+.service-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: -2rem -2rem 0 -2rem;
+  width: calc(100% + 4rem);
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 
-.service-desc {
-  font-size: 0.75rem;
-  color: #555;
-  line-height: 1.65;
-  letter-spacing: 0.02em;
+.service-card p {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+  font-size: 0.85rem;
 }
 
-.service-list {
-  flex: 1;
-}
-
-.service-list p {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-.service-list li {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid var(--light-gray);
-  color: var(--dark);
-}
-
-.service-list li:last-child { border-bottom: none; }
-
-.service-list li::first-letter {
-  color: #0B3E91;
-  font-size: 1rem;
-}
-
-.service-outcome {
-  background: none;
-  color: #111;
-  font-size: 0.7rem;
-  font-weight: 700;
-  font-style: italic;
-  font-family: 'Playfair Display', serif;
-  padding: 0.85rem 1rem;
-  border-radius: var(--radius);
-  line-height: 1.5;
-}
-
-.service-outcome em{
-   color: #0B3E91;
-  font-size: 1rem;
-}
 /* ===================================================
    WHY TEKAFRIQ
 =================================================== */
@@ -838,100 +676,48 @@ font-family: 'Times New Roman', Times, serif;
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-weight: 600;
   color: #A7A9AC;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
   line-height: 1.25;
 }
 
+.why-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
 .why-body {
-  margin-bottom: 2.5rem;
+  margin-bottom: 0;
 }
 
 .why-body p {
-  font-size: 0.95rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
   font-weight: 500;
   color: #333;
   letter-spacing: 0.04em;
   line-height: 1.7;
   margin-bottom: 0.75rem;
+  text-align: justify;
 }
 
-/* ===================================================
-   CASE STUDY
-=================================================== */
-.case-study-section {
-  padding: 6rem 2rem;
-  background: var(--off-white);
-}
-
-.case-study-grid {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 4rem;
-  align-items: start;
-}
-
-.case-left h2 {
- font-family: 'Playfair Display', serif;
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 600;
-  color: #A7A9AC;
-  margin-bottom: 2rem;
-  line-height: 1.25;
-}
-
-.case-left p {
-  font-size: 0.88rem;
-  color: #444;
-  line-height: 1.75;
-  margin-bottom: 1rem;
-}
-
-.case-conclusion {
-  border: none;
-  padding: 1.25rem 1.5rem;
-  margin-top: 2rem;
-  font-family: 'Playfair Display', serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--dark);
-  text-align: center;
-  letter-spacing: 0.02em;
-}
-
-.results-box {
-  background: var(--light-gray);
-  padding: 2rem;
+.why-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   border-radius: var(--radius);
 }
 
-.results-box h4 {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--dark);
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-}
-
-.results-box ul li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--dark);
-  padding: 0.65rem 0;
-  border-bottom: 1px solid #d0d0d0;
-  line-height: 1.4;
-}
-
-.results-box ul li:last-child { border-bottom: none; }
-
-.result-tick {
-  color: #0B3E91;
-  font-size: 1rem;
-  flex-shrink: 0;
+.why-image img {
+  width: 100%;
+  height: 100%;
+  object-fit:contain;
+  object-position: left;
+  display: block;
 }
 
 /* ===================================================
@@ -976,7 +762,7 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .delivery-step h4 {
-  font-family: 'Barlow', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -986,6 +772,8 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .delivery-step p {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
   font-size: 0.72rem;
   color: #555;
   line-height: 1.7;
@@ -1024,7 +812,7 @@ font-family: 'Times New Roman', Times, serif;
 .proof-card:last-child { border-right: none; }
 
 .proof-card p {
-  font-family: 'Times New Roman', Times, serif;
+  font-family:'Playfair Display', serif ;
   font-size: 0.88rem;
   color: #333;
   line-height: 1.8;
@@ -1032,8 +820,9 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .proof-author {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--dark);
   letter-spacing: 0.04em;
   line-height: 1.7;
@@ -1070,9 +859,10 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .industry-tag {
+  font-family: Arial, Helvetica, sans-serif;
   border: 1px solid var(--dark);
   padding: 0.65rem 1.4rem;
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--dark);
@@ -1087,10 +877,9 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .industries-note {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 0.9rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.90rem;
   color:#0B3E91;
-  font-style: italic;
 }
 
 /* ===================================================
@@ -1130,11 +919,13 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .ethics-right p {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.90rem;
   color: #444;
   letter-spacing: 0.03em;
   line-height: 1.75;
   margin-bottom: 1rem;
+  text-align: justify;
   text-transform: none;
 }
 
@@ -1215,6 +1006,7 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .contact-label {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -1232,6 +1024,7 @@ font-family: 'Times New Roman', Times, serif;
 .contact-card a:hover { color: var(--red); }
 
 .contact-card span {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.82rem;
   color: #333;
   font-weight: 400;
