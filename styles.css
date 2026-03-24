@@ -339,7 +339,7 @@ ul { list-style: none; }
 
 .hero-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-size: clamp(2.5rem, 6vw, 4.3rem);
   font-weight: 900;
   line-height: 1.12;
   color: var(--dark);
